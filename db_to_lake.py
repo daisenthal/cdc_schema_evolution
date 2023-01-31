@@ -178,6 +178,9 @@ class Db_To_Lake:
         if not self.existsTable(self.bin_log_table):
             self.createBinLogTable()
             self.createBinLogJob()
+        else:
+            # pick up any changes to table list
+            self.alterBinLogJob()
 
         # checks the binlog table for new mysql tables and adds tables and jobs for each
         tables = self.returnTablesInBinLog()
