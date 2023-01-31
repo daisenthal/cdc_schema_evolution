@@ -3,11 +3,10 @@ from db_to_lake import *
 from cleanup import *
 from lake_to_db import *
 from dotenv import load_dotenv
-from pysqlake import cli
 load_dotenv()
 
+UPSOLVER_TOKEN = os.environ["UPSOLVER_TOKEN"]
 
-UPSOLVER_TOKEN = os.getenv("UPSOLVER_TOKEN")
 
 # connection definition
 GLUE = {
@@ -42,7 +41,9 @@ OUTBOUND_DB = {
         "double":"double"
     }
 }
-OUTBOUND_DB["pwd"] = os.getenv("SF_PWD")
+
+
+OUTBOUND_DB["pwd"] = os.environ["OUTBOUND_DB_PASSWORD"]
 
 # clean up by dropping tables and jobs including in outbound db
 def cleanup(withOutput:bool):
@@ -70,7 +71,7 @@ def lake_to_db(isCDC:bool):
     outbound_handler.process()
 
 def main():
-    # cleanup(withOutput=True)
+    cleanup(withOutput=True)
     db_to_lake()
     lake_to_db(isCDC=True)
 
