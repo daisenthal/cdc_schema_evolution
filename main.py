@@ -5,7 +5,7 @@ from lake_to_db import *
 from dotenv import load_dotenv
 load_dotenv()
 
-UPSOLVER_TOKEN = os.environ["UPSOLVER_TOKEN"]
+UPSOLVER_TOKEN = os.getenv("UPSOLVER_TOKEN")
 
 
 # connection definition
@@ -42,8 +42,7 @@ OUTBOUND_DB = {
     }
 }
 
-
-OUTBOUND_DB["pwd"] = os.environ["OUTBOUND_DB_PASSWORD"]
+OUTBOUND_DB["pwd"] = os.getenv("OUTBOUND_DB_PASSWORD")
 
 # clean up by dropping tables and jobs including in outbound db
 def cleanup(withOutput:bool):
