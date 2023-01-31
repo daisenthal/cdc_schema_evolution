@@ -70,7 +70,7 @@ def lake_to_db(isCDC:bool):
     outbound_handler.process()
 
 def main():
-    # cleanup(withOutput=True)
+    cleanup(withOutput=True)
     db_to_lake()
     lake_to_db(isCDC=True)
 
