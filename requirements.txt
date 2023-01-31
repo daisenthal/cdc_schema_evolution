@@ -1,0 +1,3 @@
+pysqlake==0.0.4
+snowflake-connector-python==2.9.0
+

@@ -1,1 +1,2 @@
-# cdc_schema_evolution
+# cdc-mysql-upsolver
+# pysqlake
