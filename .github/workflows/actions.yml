@@ -28,5 +28,5 @@ jobs:
       - name: execute py script # run main.py
         env:
           UPSOLVER_TOKEN: ${{ secrets.UPSOLVER_TOKEN }}
-          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          OUTBOUND_DB_PASSWORD: ${{ secrets.OUTBOUND_DB_PASSWORD }}
         run: python main.py
