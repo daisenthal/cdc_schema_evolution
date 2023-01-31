@@ -8,7 +8,7 @@ load_dotenv()
 UPSOLVER_TOKEN = os.getenv("UPSOLVER_TOKEN")
 
 
-# connection definition
+# connection definitions
 GLUE = {
     "catalog":"my_glue_catalog_connection_david",
     "db":"david"
