@@ -10,12 +10,12 @@ UPSOLVER_TOKEN = os.getenv("UPSOLVER_TOKEN")
 
 # connection definitions
 GLUE = {
-    "catalog":"my_glue_catalog_connection_david",
-    "db":"david"
+    "catalog":"my_glue_catalog_connection",
+    "db":"db1"
 }
 
 COMPUTE_CLUSTER = "sqlake"
-INBOUND_UPSOLVER_DB_CONN = "mysql_cdc_david"
+INBOUND_UPSOLVER_DB_CONN = "mysql_cdc"
 TABLE_INCLUDE_LIST = "('stock.test1','stock.test2','stock.rating')"
 # currently only supported can also read from incoming db
 DATA_TYPES_FROM = "GLUE_CATALOG"
@@ -26,12 +26,12 @@ LAKE_TABLE_LIST = ['a','b','c']
  
 OUTBOUND_DB = {
     "type":"SF",
-    "upsolver_conn":"david_sf_conn",
-    "user":"david",
+    "upsolver_conn":"sf_conn",
+    "user":"user1",
     "account":"baa55269.us-east-1",
     "warehouse":"COMPUTE_WH",
     "db":"DEMO_DB",
-    "schema":"DAVID",
+    "schema":"schema",
     "glue_catalog_mappings" : {
         "bigint":"bigint",
         "varchar":"varchar",
@@ -70,7 +70,8 @@ def lake_to_db(isCDC:bool):
     outbound_handler.process()
 
 def main():
-    # #cleanup(withOutput=True)
+    #optionally call cleanup to remove old tables and jobs
+    # cleanup(withOutput=True)
     db_to_lake()
     lake_to_db(isCDC=True)
 
