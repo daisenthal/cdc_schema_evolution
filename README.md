@@ -24,3 +24,11 @@ Deleted columns will not effect the Data Lake tables
 Replicates Upsolver Lake tables to SnowFlake
 Supports schema evolution on adding new columns.
 Does not support changes to data type
+
+## Requirements
+pysqlake - (Reads Upsolver CLI)
+snowflake-connector-python - (Optional to replicate to SnowFlake)
+python-dotenv - for passport hiding support
+
+# Running as Job / on Push
+Includes Github action to show how script can be scheduled or triggered on action
